@@ -5,7 +5,7 @@ Export structure from dicom to numpy binary mask
 
 > pip install dicom-mask
 
-### Examle usage
+### Example usage
 
 ```python
 from dicom_mask.convert import struct_to_mask

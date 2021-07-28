@@ -1,2 +1,2 @@
 # dicom_mask
-convert dicom to numpy
+Export structure from dicom to numpy binary mask

@@ -9,7 +9,7 @@ from skimage.draw import polygon2mask
 
 def load_patient(dicom_dir_path, dicom_files):
     dicom_files = sorted(dicom_files)
-    filearray = [f for f in filearray if os.path.isfile(os.path.join(dicom_dir_path, f))]
+    filearray = [f for f in dicom_files if os.path.isfile(os.path.join(dicom_dir_path, f))]
     patient = {}
     dose_files = [f for f in filearray if 'dose' in f.lower()]
     for n in range(0, len(filearray)):
@@ -204,6 +204,6 @@ def struct_slice_np(name, im_slice, structurepixlut, structure, position, prone,
     return np.zeros(im_slice.shape) 
 
 
-def struct_to_mask(dicom_dir, dicom_fpaths, struct_name, case_sensitive=True):
+def struct_to_mask(dicom_dir, dicom_files, struct_name, case_sensitive=True):
     patient = load_patient(dicom_dir_path, dicom_files)
     np_struct = np_struct_from_patient(patient, struct_name, case_sensitive)

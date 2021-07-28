@@ -128,14 +128,17 @@ def np_struct_from_patient(patient, struct_name, case_sensitive):
         struct_slice = np.zeros(np_im_bw.shape)
         if 'structures' in patient:
             for id, structure in patient['structures'].items():
-                found_struct_name = structure['name']
-                if not case_sensitive:
-                    found_struct_name = found_struct_name.lower()
-                if struct_name == found_struct_name.lower():
+
+                if case_sensitive:
+                    found_struct = (structure['name'] == struct_name)
+                else:
+                    found_struct = (structure['name'].lower() == struct_name.lower())
+
+                if found_struct:
                     struct_slice = struct_slice_np(structure['name'],
                                                    np_im_bw, structurepixlut,
                                                    structure, z, prone, feetfirst)
-        structure_matrix[imagenum] = struct_slice 
+        structure_matrix[imagenum] += struct_slice 
     return structure_matrix
 
 
@@ -205,5 +208,6 @@ def struct_slice_np(name, im_slice, structurepixlut, structure, position, prone,
 
 
 def struct_to_mask(dicom_dir, dicom_files, struct_name, case_sensitive=True):
-    patient = load_patient(dicom_dir_path, dicom_files)
+    patient = load_patient(dicom_dir, dicom_files)
     np_struct = np_struct_from_patient(patient, struct_name, case_sensitive)
+    return np_struct

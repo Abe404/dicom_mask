@@ -1,4 +1,5 @@
-# dicom_mask
+# dicom-mask
+
 Export structure from dicom to numpy binary mask
 
 ### Install
@@ -17,11 +18,10 @@ struct_name = 'liver'
 mask = struct_to_mask(dicom_dir, dicom_files, struct_name)
 ```
 
-
 ## Citation
 
 If you find this module useful in your research, please cite the following paper:
 
-"Gating has a negligible impact on delivered dose in 20 patients treated with MRI-guided online adaptive radiotherapy for prostate cancer"
+"Gating has a negligible impact on the dose delivered to 20 prostate cancer patients treated with MRI-guided online adaptive radiotherapy"
 
 Where it is described and for which it was initially developed.

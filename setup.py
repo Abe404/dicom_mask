@@ -9,7 +9,7 @@ setup(
   packages = ['dicom_mask'],
   version = '0.0.18',
   license = 'BSD', 
-  description = 'Export structure form dicom to numpy binary mask',
+  description = 'Export structure from dicom to numpy binary mask',
   long_description_content_type='text/markdown',
   long_description=long_description,
   author = 'Abraham George Smith',

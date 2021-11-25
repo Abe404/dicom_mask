@@ -34,7 +34,9 @@ The paper for which it was initially developed is:
 
 "Gating has a negligible impact on the dose delivered to 20 prostate cancer patients treated with MRI-guided online adaptive radiotherapy"
 
-For citation of the tool please cite the zenodo repository, as this provides a DOI to a fixed version.
+For citation of the tool please cite the (zenodo repository)[https://doi.org/10.5281/zenodo.5727328]
+
+Abraham George Smith. (2021). Abe404/dicom_mask: 0.0.17b (0.0.17b). Zenodo. https://doi.org/10.5281/zenodo.5727328
 
 ### References 
 

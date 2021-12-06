@@ -21,7 +21,7 @@ The latest version is available via PyPI (https://pypi.org/project/dicom-mask) f
 from dicom_mask.convert import struct_to_mask
 
 dicom_dir = 'some_dicom_dir'
-dicom_files = ['all', 'dicom', 'series', 'image', 'filenames', 'and', 'struct', 'filename]
+dicom_files = ['all', 'dicom', 'series', 'image', 'filenames', 'and', 'struct', 'filename']
 struct_name = 'liver' 
 
 mask = struct_to_mask(dicom_dir, dicom_files, struct_name)

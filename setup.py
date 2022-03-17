@@ -1,13 +1,14 @@
 from setuptools import setup
 from pathlib import Path
+import io
 
 current_dir = Path(__file__).parent
-long_description = (current_dir / "README.md").read_text()
+long_description = io.open(current_dir / "README.md", mode="r", encoding="utf-8").read()
 
 setup(
   name = 'dicom_mask',
   packages = ['dicom_mask'],
-  version = '0.0.20',
+  version = '0.0.22',
   license = 'BSD', 
   description = 'Export structure from dicom to numpy binary mask',
   long_description_content_type='text/markdown',

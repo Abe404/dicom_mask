@@ -8,7 +8,6 @@ import pydicom
 from skimage.draw import polygon2mask
 
 def load_patient(dicom_dir_path, dicom_files):
-    dicom_files = sorted(dicom_files)
     filearray = [f for f in dicom_files if os.path.isfile(os.path.join(dicom_dir_path, f))]
     patient = {}
     dose_files = [f for f in filearray if 'dose' in f.lower()]
@@ -33,6 +32,7 @@ def load_patient(dicom_dir_path, dicom_files):
             s[k]['planes'] = d.GetStructureCoordinates(k)
             s[k]['thickness'] = d.CalculatePlaneThickness(s[k]['planes'])
         patient['structures'] = s
+
     if 'images' in patient:
         if not 'id' in patient:
             patient.update(dparser(patient['images'][0]).GetDemographics())
@@ -92,14 +92,18 @@ def load_patient(dicom_dir_path, dicom_files):
         # Otherwise sort image numbers in ascending order
         else:
             sortednums = sorted(unsortednums)
-            # Add the images to the array based on the sorted order
-            for s, num_slice in enumerate(sortednums):
-                for i, image in enumerate(images):
-                    if (sort == 'IPP'):
-                        if (num_slice == image.ds.ImagePositionPatient[2]):
-                            sortedimages.append(image)
-                    elif (num_slice == image.data_element(sort).value):
+
+       # Add the images to the array based on the sorted order
+        for s, num_slice in enumerate(sortednums):
+            for i, image in enumerate(images):
+                if (sort == 'IPP'):
+                    if (num_slice == image.ds.ImagePositionPatient[2]):
                         sortedimages.append(image)
+                elif (num_slice == image.data_element(sort).value):
+                    sortedimages.append(image)
+        # assign the images back to the patient
+        patient['images'] = sortedimages
+
     return patient
 
 def np_struct_from_patient(patient, struct_name, case_sensitive):
@@ -211,3 +215,4 @@ def struct_to_mask(dicom_dir, dicom_files, struct_name, case_sensitive=True):
     patient = load_patient(dicom_dir, dicom_files)
     np_struct = np_struct_from_patient(patient, struct_name, case_sensitive)
     return np_struct
+

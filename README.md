@@ -32,9 +32,11 @@ mask = struct_to_mask(dicom_dir, dicom_files, struct_name)
 
 The paper for which it was initially developed is:
 
-"Gating has a negligible impact on the dose delivered to 20 prostate cancer patients treated with MRI-guided online adaptive radiotherapy"
+[Gating has a negligible impact on dose delivered in MRI-guided online adaptive radiotherapy of prostate cancer](https://pubmed.ncbi.nlm.nih.gov/35351536/)
 
-For citation of the tool please cite the [zenodo repository](https://zenodo.org/record/5727328)
+Citing the above paper is best for us :)
+
+For citation of the tool source code directly please cite the [zenodo repository](https://zenodo.org/record/5727328)
 
 Abraham George Smith. (2021). Abe404/dicom_mask: 0.0.17b (0.0.17b). Zenodo. https://zenodo.org/record/5727328
 
